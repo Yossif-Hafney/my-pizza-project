@@ -76,7 +76,7 @@ Production-style preview (no file watching):
 
 ```
 cd citr-v9-project\api
-npm start
+npm start server
 
 cd ..\..\pizza-project
 npm run build
