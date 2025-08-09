@@ -44,12 +44,46 @@ cd citr-v9-project\api
 npm run dev
 ```
 
+> dev vs start (Why dev here?): `npm run dev` uses `node --watch server.js`, automatically restarting the Fastify server whenever you change backend files. Use this while coding. `npm start` runs `node server.js` once with no watching – better for a production-like run or when you want stable logs.
+
 Frontend (Vite dev server, typically port 5173):
 
 ```
 cd pizza-project
 npm run dev
 ```
+
+### Dev vs Production Commands (Summary)
+
+| Layer    | Development (hot reload / watch)        | Production-style local run                             |
+| -------- | --------------------------------------- | ------------------------------------------------------ |
+| Backend  | `cd citr-v9-project\api && npm run dev` | `cd citr-v9-project\api && npm start`                  |
+| Frontend | `cd pizza-project && npm run dev`       | `cd pizza-project && npm run build && npm run preview` |
+
+Typical two-terminal dev workflow:
+
+```
+# Terminal 1 (API)
+cd citr-v9-project\api
+npm run dev
+
+# Terminal 2 (Frontend)
+cd pizza-project
+npm run dev
+```
+
+Production-style preview (no file watching):
+
+```
+cd citr-v9-project\api
+npm start
+
+cd ..\..\pizza-project
+npm run build
+npm run preview
+```
+
+If you only run `npm start` in the backend during development you will NOT see automatic restarts after code edits; remember to re-run it manually or prefer the `dev` script.
 
 Visit: http://localhost:5173 (frontend) – it proxies/fetches API calls to http://localhost:3000 where necessary (ensure both are running).
 
